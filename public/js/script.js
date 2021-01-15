@@ -7,27 +7,27 @@
 
 // GLOBAL VARIABLES
 
-let cassRange = [];
-let cassCombo = [];
-
 function Cassette(model, range, combination) {
   this.model = model;
   this.range = range;
   this.combination = combination;
 }
-
-$.ajax('gears.json').then(data => {
-  data.forEach(cass => {
-
-    let combo = cass.combination;
+// get part data from JSON - eventually this will pull from PSQL database
+$.ajax('./gears.json').then(data => {
+data.forEach(item => {
+  let combo = item.combination;
+  let range = item.range;
+  console.log('Combo: '+combo,'Range:'+range);
   })
-  console.log(combo);
-})
+});
+
 // FUNCTIONS
 
-function accessJSON() {
-  // get part data from JSON
-};
+
+
+
+
+
 function createDropDown() {
   // build dropdown dynamically
   $("#chainring").append()
