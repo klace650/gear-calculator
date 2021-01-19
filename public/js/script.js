@@ -1,46 +1,44 @@
 'use strict';
-// how about an animation that indicated the gear ratio?
-// - like a little guy pedaling 
-// - provide the user a visual of effort/exertion. 
-
-//  will need to iterate though each cog/chainring combo. for now just a single cog - grow to set with JSON
 
 // GLOBAL VARIABLES
 
 
 
-// FUNCTIONS
+// ===============Under Construction======================
+// Please save to line 31
+// let combo = [];
 
-function Gear(model, range, combination, type) {
-  this.model = model;
-  this.range = range;
-  this.combination = combination;
-  this.type= type;
-}
+// function sortCombo(arr){
+//   arr.forEach(item => {
+//     let a = item;
+//     console.log(a);
+//   })
+//   console.log(arr);
+// }
+// sortCombo(combo);
+
+
+// function Gear(model, range, combination, type) {
+//   this.model = model;
+//   this.range = range;
+//   this.combination = combination;
+//   this.type= type;
+//   combo.push(combination);
+// }
+
+// $.ajax('./gears.json').then(data => {
+//   data.forEach(item => {
+//     if (item.type === "cassette"){
+//       let gear = new Gear(item.model, item.range, item.combination, item.type);
+//     }
+//   })
+// });
+// ===============Under Construction======================
 
 
 
-// AJAX --------------------------------------------------------
-// - method pulls data from JSON - temporary until pulling from database
-$.ajax('./gears.json').then(data => {
-  data.forEach(item => {
-    let gear = new Gear(item.model, item.range, item.combination, item.type);
-    buildOptions(gear);
-  })
-});
-// 
-// FUNCTIONS --------------------------------------------------------
-function buildOptions (arr){
-  let a = arr.combination;
-  // console.log(a);
-  let b = [];
-  a.forEach(item => {
-    // console.log(item)
-    b.push(item);
+//  FUNCTIONS --------------------------------------------------
 
-  })
-  console.log(b);
-};
 
 function calcRatio() {
   // calculates ratio of selected gear combo
