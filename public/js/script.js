@@ -1,11 +1,7 @@
 'use strict';
 
-// GLOBAL VARIABLES
-
-
-
 // ===============Under Construction======================
-// Please save to line 31
+// Please save to line 32
 // let combo = [];
 
 // function sortCombo(arr){
@@ -35,10 +31,29 @@
 // });
 // ===============Under Construction======================
 
+// GLOBAL VARIABLES
 
+let cassMin = 10;
+let cassMax = 50;
+let ringMin = 25;
+let ringMax = 52;
+
+cogDrop(cassMin,cassMax);
+ringDrop(ringMin, ringMax);
 
 //  FUNCTIONS --------------------------------------------------
 
+// Creates dropdown options dynamically - uses hard coded ranges*
+function cogDrop(a,b){
+  for(var i = a; i < b + 1; i++){
+    $('#cogs').append(`<option>${i}</option>`)
+  }
+}
+function ringDrop(a,b){
+  for(var i = a; i < b + 1; i++){
+    $('#chainring').append(`<option>${i}</option>`)
+  }
+}
 
 function calcRatio() {
   // calculates ratio of selected gear combo
