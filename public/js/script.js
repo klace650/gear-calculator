@@ -11,34 +11,36 @@
 
 // FUNCTIONS
 
-function Cassette(model, range, combination, type) {
+function Gear(model, range, combination, type) {
   this.model = model;
   this.range = range;
   this.combination = combination;
-  this.type= type
+  this.type= type;
 }
 
-let allCassettes = [];
-console.log("All Cassettes Array: ", allCassettes);
+
 
 // AJAX --------------------------------------------------------
 // - method pulls data from JSON - temporary until pulling from database
 $.ajax('./gears.json').then(data => {
   data.forEach(item => {
-    if (item.type === 'cassette'){
-      allCassettes.push(new Cassette(item.model, item.range, item.combination, item.type)
-    )};
+    let gear = new Gear(item.model, item.range, item.combination, item.type);
+    buildOptions(gear);
   })
 });
 // 
 // FUNCTIONS --------------------------------------------------------
+function buildOptions (arr){
+  let a = arr.combination;
+  // console.log(a);
+  let b = [];
+  a.forEach(item => {
+    // console.log(item)
+    b.push(item);
 
-// TODO - figure out why this console log outputs defined.
-// 
-function createDropDown(arr) {
-  console.log(arr , ':if undefined - bad - expected to get list of cassette models')
+  })
+  console.log(b);
 };
-createDropDown(allCassettes.model);
 
 function calcRatio() {
   // calculates ratio of selected gear combo
