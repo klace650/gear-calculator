@@ -38,8 +38,8 @@ let cassMax = 50;
 let ringMin = 25;
 let ringMax = 52;
 
-let selectedRing = $('#chainring option:selected').text();
-let selectedCass = $('#cogs option:selected').text();
+// let selectedRing = $('#chainring option:selected').text();
+// let selectedCass = $('#cogs option:selected').text();
 
 cogDrop(cassMin,cassMax);
 ringDrop(ringMin, ringMax);
@@ -60,11 +60,14 @@ function ringDrop(a,b){
 function calcRatio() {
   let a= $('#chainring option:selected').text();
   let b = $('#cogs option:selected').text();
-  return a / b;
+  let c = (a/b);
+  let d = ` ratio w/ ${a}T chainring and ${b}T cog.`
+  return (c + d);
 };
 
 // EVENT HANDLERS-----------------------------------------------
 $('form').submit(function (e) {
   e.preventDefault();
-  $('#showratio').append(`<li> ${calcRatio()} </li>`);
+  let a = calcRatio();
+  $('#showratio').append(`<li> ${a} </li>`);
 });
