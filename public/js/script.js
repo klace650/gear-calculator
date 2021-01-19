@@ -38,6 +38,9 @@ let cassMax = 50;
 let ringMin = 25;
 let ringMax = 52;
 
+let selectedRing = $('#chainring option:selected').text();
+let selectedCass = $('#cogs option:selected').text();
+
 cogDrop(cassMin,cassMax);
 ringDrop(ringMin, ringMax);
 
@@ -54,14 +57,14 @@ function ringDrop(a,b){
     $('#chainring').append(`<option>${i}</option>`)
   }
 }
-
 function calcRatio() {
-  // calculates ratio of selected gear combo
-  return $('#chainring option:selected').text() / $('#cogs option:selected').text();
+  let a= $('#chainring option:selected').text();
+  let b = $('#cogs option:selected').text();
+  return a / b;
 };
 
 // EVENT HANDLERS-----------------------------------------------
 $('form').submit(function (e) {
   e.preventDefault();
-  $('#showratio').append('<li>', calcRatio(), '</li>');
+  $('#showratio').append(`<li> ${calcRatio()} </li>`);
 });
