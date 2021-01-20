@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width">
     <title>Gear Calculator</title>
     <link href="./public/styles/style.css" rel="stylesheet" type="text/css" />
-
-<!-- these are just hard coded now to test functionality -->
-<form id="ratioform">
-  <label>Chainring</label>
-  <select id="chainring">
-  </select>
-  <label>Cog</label>
-  <select id="cogs">
-  </select>
-<button type="submit">Find Ratio</button>
-</form>
-
-<ul id="showratio"></ul>
-
+  </head>
+  <body>
+    <form id="ratioform">
+      <label>Chainring</label>
+        <select id="chainring"></select>
+      <label>Cog</label>
+        <select id="cogs"></select>
+      <button type="submit">Find Ratio</button>
+  </form>
+  <main>
+    <ul id="showratio"></ul>
+    
+    <p id="test"></p>
+    
+  </main>
   <script
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="

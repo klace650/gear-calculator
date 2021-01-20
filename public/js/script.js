@@ -1,34 +1,44 @@
 'use strict';
 
 // ===============Under Construction======================
-// Please save to line 32
-// let combo = [];
 
-// function sortCombo(arr){
-//   arr.forEach(item => {
-//     let a = item;
-//     console.log(a);
-//   })
-//   console.log(arr);
-// }
-// sortCombo(combo);
+// TEST GLOBALS
+let bombo = [];
+
+// Demo
+let dombo = [1,2,3,4,5,6,6,6,7,8];
+let uniqueSet = new Set(dombo);
+let combo = [...uniqueSet];
+console.log(combo, dombo);
+// NOTES:
+// "new Set" only works with hard coded array
+// seems like the set isn't iterating over the bombo array.
+// TODO: test out if this should be its own function
 
 
-// function Gear(model, range, combination, type) {
-//   this.model = model;
-//   this.range = range;
-//   this.combination = combination;
-//   this.type= type;
-//   combo.push(combination);
-// }
+function Gear(model, range, combination, type) {
+  this.model = model;
+  this.range = range;
+  this.combination = combination;
+  this.type= type;
+  // TODO: test out if pushing to bombo array - from Gear will allow the new set method to iterate through it.  
+}
 
-// $.ajax('./gears.json').then(data => {
-//   data.forEach(item => {
-//     if (item.type === "cassette"){
-//       let gear = new Gear(item.model, item.range, item.combination, item.type);
-//     }
-//   })
-// });
+$.ajax('./gears.json').then(data => {
+  data.forEach(item => {
+    if (item.type === "cassette"){
+      let gear = new Gear(item.model, item.range, item.combination, item.type);
+      let a = item.combination
+        a.forEach(item => {
+          bombo.push(item);
+          // TODO: it would be ideal to use this function to iterate though the bombo array and not need to push to a global. since i'm hoping to pull this data from a database eventually.
+      })
+    }
+  })
+});
+
+console.log(bombo, 'Pushed from AJAX')
+
 // ===============Under Construction======================
 
 // GLOBAL VARIABLES
@@ -38,11 +48,9 @@ let cassMax = 50;
 let ringMin = 25;
 let ringMax = 52;
 
-let selectedRing = $('#chainring option:selected').text();
-let selectedCass = $('#cogs option:selected').text();
-
 cogDrop(cassMin,cassMax);
 ringDrop(ringMin, ringMax);
+
 
 //  FUNCTIONS --------------------------------------------------
 
@@ -60,11 +68,14 @@ function ringDrop(a,b){
 function calcRatio() {
   let a= $('#chainring option:selected').text();
   let b = $('#cogs option:selected').text();
-  return a / b;
+  let c = (a/b);
+  let d = ` ratio w/ ${a}T chainring and ${b}T cog.`
+  return (c + d);
 };
 
 // EVENT HANDLERS-----------------------------------------------
 $('form').submit(function (e) {
   e.preventDefault();
-  $('#showratio').append(`<li> ${calcRatio()} </li>`);
+  let a = calcRatio();
+  $('#showratio').append(`<li> ${a} </li>`);
 });

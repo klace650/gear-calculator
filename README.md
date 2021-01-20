@@ -1,3 +1,33 @@
 # gear-calculator
 light web app to help explain bicycle gear combinations
 
+  {
+  "model":"R9100",
+  "range": [11,25],
+  "combination":[11,12,13,14,15,16,17,19,21,23,25],
+  "type":"cassette"
+  },
+  {
+  "model":"HG50",
+  "range": [11,28],
+  "combination":[11,13,15,17,19,21,24,28],
+  "type":"cassette"
+  },
+  {
+  "model":"XG1299",
+  "range": [10,50],
+  "combination":[10,12,14,16,18,21,24,28,32,36,42,50],
+  "type":"cassette"
+  },
+  {
+  "model":"M7000bu",
+  "range": [11,46],
+  "combination":[11,13,15,17,19,21,24,28,32,37,46],
+  "type":"cassette"
+  },
+  {
+    "model":"M7000",
+    "range": [26,36],
+    "combination":[98,99],
+    "type":"crankset"
+  }
