@@ -3,8 +3,11 @@
 // ===============Under Construction======================
 
 // TEST GLOBALS
-let combo = [];
+
+let cogCombo = [];
 let gearObj = [];
+console.log(cogCombo);
+
 
 function Gear(model, range, combination, type) {
   this.model = model;
@@ -24,25 +27,24 @@ $.ajax('./gears.json').then(data => {
           let b = item;
           x.push(b)
         })
-    } else if (item.type === 'chainring'){
-      let c = item.combination
-        c.forEach(item => {
-          let d = item;
-          y.push(d);
-        })
-    }
+    } 
   })
   let makeSet = new Set(x);
   let sortSet = [...makeSet];
   let sortedSet = sortSet.sort();
-  combo.push(sortedSet)
+  cogCombo.push(sortedSet)
   sortedSet.forEach(number => {
     $("#cogs").append(`<option>${number}</option>x`)
   })
 });
 
-console.log(combo, 'combo options')
-
+function tryIt (a,b){
+  console.log(a,b)
+  b.forEach(item => {
+    console.log(item.model)
+  })
+}
+tryIt(cogCombo, gearObj);
 // ===============Under Construction======================
 
 // GLOBAL VARIABLES
