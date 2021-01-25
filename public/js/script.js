@@ -63,7 +63,7 @@ function ringDrop(a,b){
   }
 }
 function calcRatio() {
-  let a= $('#chainring option:selected').text();
+  let a = $('#chainring option:selected').text();
   let b = $('#cogs option:selected').text();
   let c = (a/b);
   let d = ` ratio w/ ${a}T chainring and ${b}T cog.`
@@ -76,3 +76,28 @@ $('form').submit(function (e) {
   let a = calcRatio();
   $('#showratio').append(`<li> ${a} </li>`);
 });
+
+// ANIMATION-----------------------------------------------
+
+function gearRatio() {
+  // calculates ratio of selected gear combo
+  return $('#chainring option:selected').text() / $('#cogs option:selected').text();
+};
+
+$('.work').click(function(){
+  gsap.timeline()
+    // Comment out .set's if you want to run as "reset on click"
+    .set("#littleRing", {clearProps: "all"})
+    .set("#bigRing", {clearProps: "all"}) 
+    .to("#littleRing", {rotation:360 * gearRatio(), transformOrigin:"50% 50%", repeat: 0, duration: 2, delay: .5})
+    .to("#bigRing", {rotation:360, transformOrigin:"50% 50%", repeat: 0, duration: 2, delay: -2})  
+  });
+
+
+  // Uncomment below if you want to reset the animation on click
+  //  $('.reset').click(function(){
+  //   gsap.timeline()
+  //   .set("#littleRing", {clearProps: "all"})
+  //   .set("#bigRing", {clearProps: "all"})
+  //    });
+
