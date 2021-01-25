@@ -76,3 +76,11 @@ $('form').submit(function (e) {
   let a = calcRatio();
   $('#showratio').append(`<li> ${a} </li>`);
 });
+
+// ANIMATION-----------------------------------------------
+$('.work').click(function(){
+  gsap.timeline()
+    .to("#littleRing", {rotation:360 * calcRatio(), transformOrigin:"50% 50%", repeat: 0, duration: 2,})
+    .to("#bigRing", {rotation:360, transformOrigin:"50% 50%", repeat: 0, duration: 2, delay: -2})
+   });
+
