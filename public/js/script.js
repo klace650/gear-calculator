@@ -3,11 +3,9 @@
 // ===============Under Construction======================
 
 // TEST GLOBALS
-
 let cogCombo = [];
 let gearObj = [];
 console.log(cogCombo);
-
 
 function Gear(model, range, combination, type) {
   this.model = model;
@@ -15,7 +13,11 @@ function Gear(model, range, combination, type) {
   this.combination = combination;
   this.type= type;
   gearObj.push(this);
+
 }
+console.log('gearObj: ',gearObj);
+
+
 $.ajax('./gears.json').then(data => {
   let x = [];
   let y = [];
@@ -38,13 +40,13 @@ $.ajax('./gears.json').then(data => {
   })
 });
 
-function tryIt (a,b){
-  console.log(a,b)
-  b.forEach(item => {
-    console.log(item.model)
-  })
+function removeDuplicates(arr){
+  let makeSet = new Set (arr);
+  let sortSet = [...makeSet];
+  let sortedSet = sortSet.sort();
+  console.log(sortedSet)
 }
-tryIt(cogCombo, gearObj);
+removeDuplicates();
 // ===============Under Construction======================
 
 // GLOBAL VARIABLES
@@ -63,7 +65,7 @@ function ringDrop(a,b){
   }
 }
 function calcRatio() {
-  let a = $('#chainring option:selected').text();
+  let a= $('#chainring option:selected').text();
   let b = $('#cogs option:selected').text();
   let c = (a/b);
   let d = ` ratio w/ ${a}T chainring and ${b}T cog.`
@@ -76,7 +78,6 @@ $('form').submit(function (e) {
   let a = calcRatio();
   $('#showratio').append(`<li> ${a} </li>`);
 });
-
 // ANIMATION-----------------------------------------------
 
 function gearRatio() {
@@ -100,4 +101,3 @@ $('.work').click(function(){
   //   .set("#littleRing", {clearProps: "all"})
   //   .set("#bigRing", {clearProps: "all"})
   //    });
-
