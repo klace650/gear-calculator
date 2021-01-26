@@ -1,16 +1,12 @@
 'use strict';
 
+// GLOBAL VARIABLES ----------------------------------------------
 
-
-// GLOBAL VARIABLES
 let gearObj = [];
+// no real use for this yet, but probably eventually?
 
-function Gear(model, range, combination, type) {
-  this.model = model;
-  this.range = range;
-  this.combination = combination;
-  this.type= type;
-}
+
+// AJAX - eventually from a database ------------------------------
 
 $.ajax('./gears.json').then(data => {
   let x = [];
@@ -29,19 +25,16 @@ $.ajax('./gears.json').then(data => {
       })
     }
   })
-  let cass = removeDuplicates(x);
-  let ring = removeDuplicates(y);
-  cass.forEach(number => {
+  removeDuplicates(x).forEach(number => {
     $('#cogs').append(`<option>${number}</option>`);
-  })
-  ring.forEach(number => {
+  });
+  removeDuplicates(y).forEach(number => {
     $('#chainring').append(`<option>${number}</option>`)
-  })
+  });
 });
 
 
 //  FUNCTIONS --------------------------------------------------
-
 
 function calcRatio() {
   let a= $('#chainring option:selected').text();
@@ -56,7 +49,16 @@ function removeDuplicates(arr){
   let sortSet = [...makeSet];
   let sortedSet = sortSet.sort();
   return sortedSet;
-}
+};
+
+function Gear(model, range, combination, type) {
+  this.model = model;
+  this.range = range;
+  this.combination = combination;
+  this.type= type;
+  gearObj.push(this);
+};
+
 
 // EVENT HANDLERS-----------------------------------------------
 
