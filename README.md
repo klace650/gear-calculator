@@ -27,6 +27,8 @@ _Mobile first development_ : web based and agnostic to operating system.
 ## Change Log:
 
 25 Jan 21 - Main Branch merged  
+- Basic functions working
+- Parts data comes from included JSON file
 
 
 ## Links:
