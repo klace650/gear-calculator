@@ -3,34 +3,70 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>Gear Calculator</title>
     <link href="./public/styles/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <form id="ratioform">
+      <label>Chainring</label>
+        <select id="chainring"></select>
+      <label>Cog</label>
+        <select id="cogs"></select>
+      <button type="submit">Find Ratio</button>
+      <button type="button" class="work">See It Work</button>
+      <!-- <button type="button" class="reset">Reset</button> -->
+  </form>
+  <main>
 
-<!-- these are just hard coded now to test functionality -->
-<form id="ratioform">
-  <label>Chainring</label>
-  <select id="chainring">
-    <option>42</option>
-    <option>40</option>
-    <option>38</option>
-  </select>
-  <label>Cog</label>
-  <select id="cogs">
-<!-- Single cog for now  -->
-   <option>17</option>
-    <option>18</option>
-    <option>19</option>
-    <option>20</option>
-  </select>
-<button type="submit">Find Ratio</button>
-</form>
+        <!-- ANIMATION -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 467.48 183.8" id="cogAnimation">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: #fc9447;
+              }
+        
+              .cls-2 {
+                fill: #1da9ff;
+              }
+        
+              .cls-3 {
+                fill: none;
+                stroke: #1da9ff;
+                stroke-miterlimit: 10;
+                stroke-width: 4px;
+              }
+            </style>
+          </defs>
+          <g id="bigRing">
+            <g>
+              <circle class="cls-1" cx="375.62" cy="91.86" r="89.86"/>
+              <path class="cls-2" d="M768.86,336.74A87.86,87.86,0,1,1,681,424.6a88,88,0,0,1,87.86-87.86m0-4a91.86,91.86,0,1,0,91.86,91.86A91.86,91.86,0,0,0,768.86,332.74Z" transform="translate(-393.24 -332.74)"/>
+              <rect class="cls-2" x="368.39" y="1.99" width="14.46" height="89.87"/>
+            </g>
+          </g>
+          <g id="littleRing">
+            <g>
+              <circle class="cls-1" cx="50.62" cy="91.86" r="48.62"/>
+              <path class="cls-2" d="M443.86,378a46.62,46.62,0,1,1-46.62,46.62A46.67,46.67,0,0,1,443.86,378m0-4a50.62,50.62,0,1,0,50.62,50.62A50.62,50.62,0,0,0,443.86,374Z" transform="translate(-393.24 -332.74)"/>
+              <rect class="cls-2" x="42.19" y="41.95" width="14.46" height="49.92"/>
+            </g>
+          </g>
+          <g id="chain">
+            <line class="cls-3" x1="50.62" y1="43.24" x2="375.62" y2="2"/>
+            <line class="cls-3" x1="49.42" y1="140.44" x2="371.31" y2="181.82"/>
+          </g>
+        </svg>
+        <!-- END ANIMATION-->
 
-<ul id="showratio"></ul>
-
+    <ul id="showratio"></ul>
+    
+  </main>
   <script
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
   <script src="./public/js/script.js"></script>
   </body>
 </html>

@@ -1,4 +1,13 @@
 @import 'reset.css';
 form {
   background-color: chartreuse;
+  width: 180px;
+  padding: 10px;
+}
+button{
+  padding: 5px;
+}
+
+#cogAnimation{
+  width: 33.33%
 }

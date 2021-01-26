@@ -1,47 +1,93 @@
 'use strict';
-// how about an animation that indicated the gear ratio?
-// - like a little guy pedaling 
-// - provide the user a visual of effort/exertion. 
 
-//  will need to iterate though each cog/chainring combo. for now just a single cog - grow to set with JSON
+// GLOBAL VARIABLES ----------------------------------------------
 
-// GLOBAL VARIABLES
+let gearObj = [];
+// no real use for this yet, but probably eventually?
 
-let cassRange = [];
-let cassCombo = [];
 
-function Cassette(model, range, combination) {
+// AJAX - eventually from a database ------------------------------
+
+$.ajax('./gears.json').then(data => {
+  let x = [];
+  let y = [];
+  data.forEach(item => {
+    new Gear(item.model, item.range, item.combination, item.type);
+    if (item.type === "cassette"){
+      let a = item.combination
+        a.forEach(item => {
+          x.push(item)
+        })
+    } else if (item.type === 'crankset'){
+      let c = item.combination
+      c.forEach(item => {
+        y.push(item)
+      })
+    }
+  })
+  removeDuplicates(x).forEach(number => {
+    $('#cogs').append(`<option>${number}</option>`);
+  });
+  removeDuplicates(y).forEach(number => {
+    $('#chainring').append(`<option>${number}</option>`)
+  });
+});
+
+
+//  FUNCTIONS --------------------------------------------------
+
+function calcRatio() {
+  let a= $('#chainring option:selected').text();
+  let b = $('#cogs option:selected').text();
+  let c = (a/b);
+  let d = ` ratio w/ ${a}T chainring and ${b}T cog.`
+  return (c + d);
+};
+
+function removeDuplicates(arr){
+  let makeSet = new Set (arr);
+  let sortSet = [...makeSet];
+  let sortedSet = sortSet.sort();
+  return sortedSet;
+};
+
+function Gear(model, range, combination, type) {
   this.model = model;
   this.range = range;
   this.combination = combination;
-}
-
-$.ajax('gears.json').then(data => {
-  data.forEach(cass => {
-
-    let combo = cass.combination;
-  })
-  console.log(combo);
-})
-// FUNCTIONS
-
-function accessJSON() {
-  // get part data from JSON
-};
-function createDropDown() {
-  // build dropdown dynamically
-  $("#chainring").append()
+  this.type= type;
+  gearObj.push(this);
 };
 
-function calcRatio() {
+
+// EVENT HANDLERS-----------------------------------------------
+
+$('form').submit(function (e) {
+  e.preventDefault();
+  let a = calcRatio();
+  $('#showratio').append(`<li> ${a} </li>`);
+});
+
+// ANIMATION-----------------------------------------------
+
+function gearRatio() {
   // calculates ratio of selected gear combo
   return $('#chainring option:selected').text() / $('#cogs option:selected').text();
 };
 
-// EVENT HANDLERS
-$('form').submit(function (e) {
-  e.preventDefault();
-  $('#showratio').append('<li>', calcRatio(), '</li>');
-});
+$('.work').click(function(){
+  gsap.timeline()
+    // Comment out .set's if you want to run as "reset on click"
+    .set("#littleRing", {clearProps: "all"})
+    .set("#bigRing", {clearProps: "all"}) 
+    .to("#littleRing", {rotation:360 * gearRatio(), transformOrigin:"50% 50%", repeat: 0, duration: 2, delay: .5})
+    .to("#bigRing", {rotation:360, transformOrigin:"50% 50%", repeat: 0, duration: 2, delay: -2})  
+  });
 
 
+  // Uncomment below if you want to reset the animation on click
+  //  $('.reset').click(function(){
+  //   gsap.timeline()
+  //   .set("#littleRing", {clearProps: "all"})
+  //   .set("#bigRing", {clearProps: "all"})
+  //    });
