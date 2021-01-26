@@ -1,6 +1,15 @@
 'use strict';
 
 // GLOBAL VARIABLES ----------------------------------------------
+// TODO: put and point gears.json into data folder
+
+// TODO: refactor HTML into EJS partials
+
+// TODO: SMACSS the styling - later
+
+// TODO: fill gears.json with 2 models of each skill level - ie advanced, intermediate, novice
+
+// TODO: 
 
 let gearObj = [];
 // no real use for this yet, but probably eventually?
@@ -37,6 +46,7 @@ $.ajax('./gears.json').then(data => {
 //  FUNCTIONS --------------------------------------------------
 
 function calcRatio() {
+  // TODO: round to 2 decimal places
   let a= $('#chainring option:selected').text();
   let b = $('#cogs option:selected').text();
   let c = (a/b);
