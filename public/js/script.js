@@ -1,22 +1,12 @@
 'use strict';
 
-// ===============Under Construction======================
+// GLOBAL VARIABLES ----------------------------------------------
 
-// TEST GLOBALS
-let cogCombo = [];
 let gearObj = [];
-console.log(cogCombo);
+// no real use for this yet, but probably eventually?
 
-function Gear(model, range, combination, type) {
-  this.model = model;
-  this.range = range;
-  this.combination = combination;
-  this.type= type;
-  gearObj.push(this);
 
-}
-console.log('gearObj: ',gearObj);
-
+// AJAX - eventually from a database ------------------------------
 
 $.ajax('./gears.json').then(data => {
   let x = [];
@@ -26,44 +16,26 @@ $.ajax('./gears.json').then(data => {
     if (item.type === "cassette"){
       let a = item.combination
         a.forEach(item => {
-          let b = item;
-          x.push(b)
+          x.push(item)
         })
-    } 
+    } else if (item.type === 'crankset'){
+      let c = item.combination
+      c.forEach(item => {
+        y.push(item)
+      })
+    }
   })
-  let makeSet = new Set(x);
-  let sortSet = [...makeSet];
-  let sortedSet = sortSet.sort();
-  cogCombo.push(sortedSet)
-  sortedSet.forEach(number => {
-    $("#cogs").append(`<option>${number}</option>x`)
-  })
+  removeDuplicates(x).forEach(number => {
+    $('#cogs').append(`<option>${number}</option>`);
+  });
+  removeDuplicates(y).forEach(number => {
+    $('#chainring').append(`<option>${number}</option>`)
+  });
 });
-
-function removeDuplicates(arr){
-  let makeSet = new Set (arr);
-  let sortSet = [...makeSet];
-  let sortedSet = sortSet.sort();
-  console.log(sortedSet)
-}
-removeDuplicates();
-// ===============Under Construction======================
-
-// GLOBAL VARIABLES
-
-let ringMin = 25;
-let ringMax = 52;
-
-ringDrop(ringMin, ringMax);
 
 
 //  FUNCTIONS --------------------------------------------------
 
-function ringDrop(a,b){
-  for(var i = a; i < b + 1; i++){
-    $('#chainring').append(`<option>${i}</option>`)
-  }
-}
 function calcRatio() {
   let a= $('#chainring option:selected').text();
   let b = $('#cogs option:selected').text();
@@ -72,12 +44,30 @@ function calcRatio() {
   return (c + d);
 };
 
+function removeDuplicates(arr){
+  let makeSet = new Set (arr);
+  let sortSet = [...makeSet];
+  let sortedSet = sortSet.sort();
+  return sortedSet;
+};
+
+function Gear(model, range, combination, type) {
+  this.model = model;
+  this.range = range;
+  this.combination = combination;
+  this.type= type;
+  gearObj.push(this);
+};
+
+
 // EVENT HANDLERS-----------------------------------------------
+
 $('form').submit(function (e) {
   e.preventDefault();
   let a = calcRatio();
   $('#showratio').append(`<li> ${a} </li>`);
 });
+
 // ANIMATION-----------------------------------------------
 
 function gearRatio() {
