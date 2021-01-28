@@ -1,13 +1,138 @@
 @import 'reset.css';
 form {
-  background-color: chartreuse;
-  width: 180px;
-  padding: 10px;
+  background-color: #1C1C1C;
+  padding: 15px;
+  margin: 15px;
+  color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 15px -9px #000000; 
+  box-shadow: 5px 5px 15px -9px #000000;
+  font-size: 1.5rem;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
 }
-button{
-  padding: 5px;
+
+/***** undoing default button sytles *****/
+button {
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+}
+
+/* button:hover {
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+} */
+
+button:active {
+  outline: none;
+  border: none;
+}
+
+button:focus {
+  outline: 0;
+}
+/***** end default style kill *****/
+
+button {
+  background-color: #97F8FF;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 15px -9px #000000; 
+  box-shadow: 5px 5px 15px -9px #000000;
+  padding: 10px;
+  display: block;
+  font-weight: bold;
+}
+
+form button {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+.work {
+  background-color: #8F8F8F;
+  color: white;
+}
+
+.center p {
+  margin-top: 2rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+main {
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  background: #575757;
+  font-family: 'Arimo', sans-serif;
+
+}
+
+header {
+  height: 4rem;
+  background-color: black;
+  width: 100%;
+  justify-content: center;
+  align-items:center;
+}
+
+h1 {
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.container {
+  display: grid;
+}
+
+.flex-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.space-evenly {
+  justify-content: space-between;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+#ratioform section {
+  display: inline-block;
+  text-align: center;
+}
+
+#ratioform section:nth-child(1) {
+  padding-left: 1rem;
+}
+
+#ratioform section:nth-child(2) {
+  padding-right: 1rem;
+}
+
+#ratioform section label {
+  display: block;
 }
 
 #cogAnimation{
-  width: 33.33%
+  margin: 5rem 15px 0 15px;
 }
