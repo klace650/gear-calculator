@@ -48,19 +48,25 @@ button {
   border-radius: 10px;
   -webkit-box-shadow: 5px 5px 15px -9px #000000; 
   box-shadow: 5px 5px 15px -9px #000000;
-  padding: 10px;
+  padding: 5px;
   display: block;
-  font-weight: bold;
 }
 
 form button {
   margin-top: 2rem;
   font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.compare-button {
+  background: #8F8F8F;
+  color: white;
 }
 
 .work {
   background-color: #8F8F8F;
   color: white;
+  font-weight: 600;
 }
 
 .center p {
@@ -116,17 +122,14 @@ h1 {
   justify-content: center;
 }
 
+.space-around {
+  display: flex;
+  justify-content: space-around;
+}
+
 #ratioform section {
   display: inline-block;
   text-align: center;
-}
-
-#ratioform section:nth-child(1) {
-  padding-left: 1rem;
-}
-
-#ratioform section:nth-child(2) {
-  padding-right: 1rem;
 }
 
 #ratioform section label {

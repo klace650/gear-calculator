@@ -62,6 +62,7 @@ function ringDrop(a,b){
     $('#chainring').append(`<option>${i}</option>`)
   }
 }
+
 function calcRatio() {
   let a = $('#chainring option:selected').text();
   let b = $('#cogs option:selected').text();
