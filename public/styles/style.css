@@ -11,3 +11,9 @@ button{
 #cogAnimation{
   width: 33.33%
 }
+
+#testDiv{
+  background-color: blue;
+  width: 25%;
+  color: azure;
+}

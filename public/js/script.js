@@ -47,7 +47,7 @@ $.ajax('./gears.json').then(data => {
 
 function calcRatio() {
   // TODO: round to 2 decimal places
-  let a= $('#chainring option:selected').text();
+  let a = $('#chainring option:selected').text();
   let b = $('#cogs option:selected').text();
   let c = (a/b);
   let d = ` ratio w/ ${a}T chainring and ${b}T cog.`
